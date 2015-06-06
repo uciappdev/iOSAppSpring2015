@@ -1,0 +1,10 @@
+PODS:
+  - MagicPie (1.1.1)
+
+DEPENDENCIES:
+  - MagicPie
+
+SPEC CHECKSUMS:
+  MagicPie: 0cfe79ae6e312d64f6799e3c2ba146b26ba5c79c
+
+COCOAPODS: 0.37.1
