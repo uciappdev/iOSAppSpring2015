@@ -22,5 +22,8 @@ class CustomTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    func changeTextColor (color: UIColor) {
+        titleLabel.textColor = color
+        subtitleLabel.textColor = color
+    }
 }

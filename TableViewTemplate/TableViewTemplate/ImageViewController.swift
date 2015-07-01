@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ImageViewController.swift
 //  TableViewTemplate
 //
 //  Created by Jake on 6/3/15.
@@ -8,18 +8,27 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ImageViewController: UIViewController {
 
-    // StoryBoard objects
+    // MARK: StoryBoard objects
+    // Need a copy of the original image for resizeImage because 
     var originalImage : UIImage!
     var image : UIImage!
+    // The name of the image file is passed from the previous ViewController
     var imageFileName : String!
-    let imageView : UIImageView = UIImageView()
-
+    // An UIImageView that is resized to fit the size of the picture.
+    let imageView = UIImageView()
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Load the theme
+        let isBeachTheme = NSUserDefaults.standardUserDefaults().boolForKey("isBeachThemeKey")
+        loadTheme(isBeachTheme)
+        // Image is loaded and copied to originalImage as well
         image = UIImage(named: imageFileName)
         originalImage = image
+        // Resize the image to fit the screen.
         resizeImage()
         view.addSubview(imageView)
     }
@@ -29,6 +38,7 @@ class SecondViewController: UIViewController {
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        // Resize the image whent he screen orientation is changed.
         resizeImage()
     }
     
@@ -41,5 +51,14 @@ class SecondViewController: UIViewController {
         imageView.frame = CGRectMake(0, navigationBarHeight!, image.size.width, image.size.height)
         imageView.image = image
         imageView.center = CGPoint(x: width/2, y: height/2+navigationBarHeight!)
+    }
+    
+    func loadTheme(isBeachTheme: Bool) {
+        if isBeachTheme {
+            backgroundImage.image = UIImage(named: "beach.jpg")
+        }
+        else {
+            backgroundImage.image = UIImage(named: "night-sky.jpg")
+        }
     }
 }
