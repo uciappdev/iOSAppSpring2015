@@ -30,9 +30,9 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     
     // Input data that should be gotten from Database
-    var titleData = ["Earth", "Mars", "Pluto"]
-    var subtitleData = ["Blue planet", "Red planet", "Planet?"]
-    var imageFileNames = ["earth.jpg", "mars.jpg", "pluto.jpg"]
+    var titleData = ["Earth", "Mars", "Pluto", "TRex", "Triceratops", "Indominous Rex", "Spinosaurus"]
+    var subtitleData = ["Blue planet", "Red planet", "Planet?", "King Lizard", "3 Horn Face", "Death Lizard", "Death Fish"]
+    var imageFileNames = ["earth.jpg", "mars.jpg", "pluto.jpg", "TRex.jpg", "Triceratops.jpg", "Indominous_Rex.jpg", "Spinosaurus.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

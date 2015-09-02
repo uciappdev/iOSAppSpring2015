@@ -10,6 +10,10 @@
 		69399F4B1B38AA5400342216 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69399F4A1B38AA5400342216 /* OptionsViewController.swift */; };
 		693B37FC1B3F773400132B15 /* marker-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 693B37FB1B3F773400132B15 /* marker-circle.png */; };
 		693B37FE1B3F854A00132B15 /* yellowCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 693B37FD1B3F854A00132B15 /* yellowCameraIcon.png */; };
+		69444FC01B655C2300DA1041 /* TRex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FBF1B655C2300DA1041 /* TRex.jpg */; };
+		69444FC41B655E3900DA1041 /* Triceratops.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FC21B655E3900DA1041 /* Triceratops.jpg */; };
+		69444FC61B655ED800DA1041 /* Indominous_Rex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FC51B655ED800DA1041 /* Indominous_Rex.jpg */; };
+		69444FC81B655F5900DA1041 /* Spinosaurus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FC71B655F5900DA1041 /* Spinosaurus.jpg */; };
 		6946F6F31B39164100DC5262 /* beach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6946F6F21B39164100DC5262 /* beach.jpg */; };
 		6946F6F51B39182700DC5262 /* night-sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6946F6F41B39182700DC5262 /* night-sky.jpg */; };
 		698BA0261B1FD6D4003973E7 /* RBResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698BA0251B1FD6D4003973E7 /* RBResizer.swift */; };
@@ -43,6 +47,10 @@
 		69399F4A1B38AA5400342216 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = ../OptionsViewController.swift; sourceTree = "<group>"; };
 		693B37FB1B3F773400132B15 /* marker-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-circle.png"; sourceTree = "<group>"; };
 		693B37FD1B3F854A00132B15 /* yellowCameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowCameraIcon.png; sourceTree = "<group>"; };
+		69444FBF1B655C2300DA1041 /* TRex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TRex.jpg; sourceTree = "<group>"; };
+		69444FC21B655E3900DA1041 /* Triceratops.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triceratops.jpg; sourceTree = "<group>"; };
+		69444FC51B655ED800DA1041 /* Indominous_Rex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Indominous_Rex.jpg; sourceTree = "<group>"; };
+		69444FC71B655F5900DA1041 /* Spinosaurus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Spinosaurus.jpg; sourceTree = "<group>"; };
 		6946F6F21B39164100DC5262 /* beach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beach.jpg; sourceTree = "<group>"; };
 		6946F6F41B39182700DC5262 /* night-sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "night-sky.jpg"; sourceTree = "<group>"; };
 		698BA0251B1FD6D4003973E7 /* RBResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBResizer.swift; sourceTree = "<group>"; };
@@ -150,8 +158,12 @@
 			isa = PBXGroup;
 			children = (
 				69A7F9B31B226A2B0001ABEE /* redCameraIcon.png */,
+				69444FBF1B655C2300DA1041 /* TRex.jpg */,
 				69BE55831B1EE3B500440C76 /* earth.jpg */,
 				69BE55841B1EE3B500440C76 /* mars.jpg */,
+				69444FC71B655F5900DA1041 /* Spinosaurus.jpg */,
+				69444FC51B655ED800DA1041 /* Indominous_Rex.jpg */,
+				69444FC21B655E3900DA1041 /* Triceratops.jpg */,
 				693B37FB1B3F773400132B15 /* marker-circle.png */,
 				69CD29051B38FC64000AA973 /* camera-icon2.png */,
 				693B37FD1B3F854A00132B15 /* yellowCameraIcon.png */,
@@ -245,12 +257,16 @@
 				69BE55861B1EE3B500440C76 /* earth.jpg in Resources */,
 				6946F6F31B39164100DC5262 /* beach.jpg in Resources */,
 				69A7F9B51B226A2B0001ABEE /* redCameraIcon.png in Resources */,
+				69444FC61B655ED800DA1041 /* Indominous_Rex.jpg in Resources */,
 				69BE55871B1EE3B500440C76 /* mars.jpg in Resources */,
+				69444FC41B655E3900DA1041 /* Triceratops.jpg in Resources */,
 				69BE55881B1EE3B500440C76 /* pluto.jpg in Resources */,
 				69CD29061B38FC64000AA973 /* camera-icon2.png in Resources */,
 				693B37FC1B3F773400132B15 /* marker-circle.png in Resources */,
 				693B37FE1B3F854A00132B15 /* yellowCameraIcon.png in Resources */,
+				69444FC81B655F5900DA1041 /* Spinosaurus.jpg in Resources */,
 				69BE55651B1ED72900440C76 /* Main.storyboard in Resources */,
+				69444FC01B655C2300DA1041 /* TRex.jpg in Resources */,
 				69BE556A1B1ED72900440C76 /* LaunchScreen.xib in Resources */,
 				69BE55671B1ED72900440C76 /* Images.xcassets in Resources */,
 				6946F6F51B39182700DC5262 /* night-sky.jpg in Resources */,
