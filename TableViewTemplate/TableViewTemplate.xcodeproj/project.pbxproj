@@ -7,30 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69399F4B1B38AA5400342216 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69399F4A1B38AA5400342216 /* OptionsViewController.swift */; };
 		693B37FC1B3F773400132B15 /* marker-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 693B37FB1B3F773400132B15 /* marker-circle.png */; };
 		693B37FE1B3F854A00132B15 /* yellowCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 693B37FD1B3F854A00132B15 /* yellowCameraIcon.png */; };
-		69444FC01B655C2300DA1041 /* TRex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FBF1B655C2300DA1041 /* TRex.jpg */; };
-		69444FC41B655E3900DA1041 /* Triceratops.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FC21B655E3900DA1041 /* Triceratops.jpg */; };
-		69444FC61B655ED800DA1041 /* Indominous_Rex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FC51B655ED800DA1041 /* Indominous_Rex.jpg */; };
-		69444FC81B655F5900DA1041 /* Spinosaurus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69444FC71B655F5900DA1041 /* Spinosaurus.jpg */; };
 		6946F6F31B39164100DC5262 /* beach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6946F6F21B39164100DC5262 /* beach.jpg */; };
 		6946F6F51B39182700DC5262 /* night-sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6946F6F41B39182700DC5262 /* night-sky.jpg */; };
-		698BA0261B1FD6D4003973E7 /* RBResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698BA0251B1FD6D4003973E7 /* RBResizer.swift */; };
+		694E60641B8570B700F53EA5 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E60631B8570B700F53EA5 /* OptionsTableViewController.swift */; };
+		694E60661B857AD400F53EA5 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E60651B857AD400F53EA5 /* NavigationViewController.swift */; };
+		694E60681B8580FB00F53EA5 /* OptionsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E60671B8580FB00F53EA5 /* OptionsCustomTableViewCell.swift */; };
+		69611DC91B844E7B00118FD8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69611DC81B844E7B00118FD8 /* Constants.swift */; };
+		6995AAB71B858E0E00868E25 /* unselectedRadioButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6995AAB51B858E0E00868E25 /* unselectedRadioButton.png */; };
+		6995AAB81B858E0E00868E25 /* selectedRadioButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6995AAB61B858E0E00868E25 /* selectedRadioButton.png */; };
 		69A7F9B51B226A2B0001ABEE /* redCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A7F9B31B226A2B0001ABEE /* redCameraIcon.png */; };
 		69BE55601B1ED72900440C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE555F1B1ED72900440C76 /* AppDelegate.swift */; };
-		69BE55621B1ED72900440C76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE55611B1ED72900440C76 /* ViewController.swift */; };
+		69BE55621B1ED72900440C76 /* PlanetaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE55611B1ED72900440C76 /* PlanetaryViewController.swift */; };
 		69BE55651B1ED72900440C76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BE55631B1ED72900440C76 /* Main.storyboard */; };
 		69BE55671B1ED72900440C76 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69BE55661B1ED72900440C76 /* Images.xcassets */; };
 		69BE556A1B1ED72900440C76 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69BE55681B1ED72900440C76 /* LaunchScreen.xib */; };
 		69BE55761B1ED72900440C76 /* TableViewTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE55751B1ED72900440C76 /* TableViewTemplateTests.swift */; };
-		69BE55801B1ED84900440C76 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE557F1B1ED84900440C76 /* CustomTableViewCell.swift */; };
+		69BE55801B1ED84900440C76 /* PlanetaryCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE557F1B1ED84900440C76 /* PlanetaryCustomTableViewCell.swift */; };
 		69BE55821B1EDF2600440C76 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE55811B1EDF2600440C76 /* ImageViewController.swift */; };
 		69BE55861B1EE3B500440C76 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69BE55831B1EE3B500440C76 /* earth.jpg */; };
 		69BE55871B1EE3B500440C76 /* mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69BE55841B1EE3B500440C76 /* mars.jpg */; };
 		69BE55881B1EE3B500440C76 /* pluto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69BE55851B1EE3B500440C76 /* pluto.jpg */; };
-		69C0AFBB1B3E5D950007FE70 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C0AFBA1B3E5D950007FE70 /* NavigationController.swift */; };
-		69CD29061B38FC64000AA973 /* camera-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 69CD29051B38FC64000AA973 /* camera-icon2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,34 +42,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		69399F4A1B38AA5400342216 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = ../OptionsViewController.swift; sourceTree = "<group>"; };
 		693B37FB1B3F773400132B15 /* marker-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-circle.png"; sourceTree = "<group>"; };
 		693B37FD1B3F854A00132B15 /* yellowCameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowCameraIcon.png; sourceTree = "<group>"; };
-		69444FBF1B655C2300DA1041 /* TRex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TRex.jpg; sourceTree = "<group>"; };
-		69444FC21B655E3900DA1041 /* Triceratops.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Triceratops.jpg; sourceTree = "<group>"; };
-		69444FC51B655ED800DA1041 /* Indominous_Rex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Indominous_Rex.jpg; sourceTree = "<group>"; };
-		69444FC71B655F5900DA1041 /* Spinosaurus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Spinosaurus.jpg; sourceTree = "<group>"; };
 		6946F6F21B39164100DC5262 /* beach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beach.jpg; sourceTree = "<group>"; };
 		6946F6F41B39182700DC5262 /* night-sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "night-sky.jpg"; sourceTree = "<group>"; };
-		698BA0251B1FD6D4003973E7 /* RBResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBResizer.swift; sourceTree = "<group>"; };
+		694E60631B8570B700F53EA5 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsTableViewController.swift; path = ../OptionsTableViewController.swift; sourceTree = "<group>"; };
+		694E60651B857AD400F53EA5 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		694E60671B8580FB00F53EA5 /* OptionsCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCustomTableViewCell.swift; sourceTree = "<group>"; };
+		69611DC81B844E7B00118FD8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6995AAB51B858E0E00868E25 /* unselectedRadioButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unselectedRadioButton.png; sourceTree = "<group>"; };
+		6995AAB61B858E0E00868E25 /* selectedRadioButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedRadioButton.png; sourceTree = "<group>"; };
 		69A7F9B31B226A2B0001ABEE /* redCameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redCameraIcon.png; sourceTree = "<group>"; };
 		69BE555A1B1ED72900440C76 /* TableViewTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BE555E1B1ED72900440C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69BE555F1B1ED72900440C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		69BE55611B1ED72900440C76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		69BE55611B1ED72900440C76 /* PlanetaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetaryViewController.swift; sourceTree = "<group>"; };
 		69BE55641B1ED72900440C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69BE55661B1ED72900440C76 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69BE55691B1ED72900440C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		69BE556F1B1ED72900440C76 /* TableViewTemplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewTemplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BE55741B1ED72900440C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69BE55751B1ED72900440C76 /* TableViewTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTemplateTests.swift; sourceTree = "<group>"; };
-		69BE557F1B1ED84900440C76 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		69BE557F1B1ED84900440C76 /* PlanetaryCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetaryCustomTableViewCell.swift; sourceTree = "<group>"; };
 		69BE55811B1EDF2600440C76 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		69BE55831B1EE3B500440C76 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
 		69BE55841B1EE3B500440C76 /* mars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mars.jpg; sourceTree = "<group>"; };
 		69BE55851B1EE3B500440C76 /* pluto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pluto.jpg; sourceTree = "<group>"; };
-		69C0AFBA1B3E5D950007FE70 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		69CD29051B38FC64000AA973 /* camera-icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,16 +109,14 @@
 		69BE555C1B1ED72900440C76 /* TableViewTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				69399F4A1B38AA5400342216 /* OptionsViewController.swift */,
-				69BE555F1B1ED72900440C76 /* AppDelegate.swift */,
-				69BE55611B1ED72900440C76 /* ViewController.swift */,
+				694E60631B8570B700F53EA5 /* OptionsTableViewController.swift */,
+				69BE55611B1ED72900440C76 /* PlanetaryViewController.swift */,
 				69BE55631B1ED72900440C76 /* Main.storyboard */,
-				69C0AFBA1B3E5D950007FE70 /* NavigationController.swift */,
+				694E60651B857AD400F53EA5 /* NavigationViewController.swift */,
 				69BE55811B1EDF2600440C76 /* ImageViewController.swift */,
-				698BA0251B1FD6D4003973E7 /* RBResizer.swift */,
-				69BE557F1B1ED84900440C76 /* CustomTableViewCell.swift */,
-				69BE55661B1ED72900440C76 /* Images.xcassets */,
-				69BE55681B1ED72900440C76 /* LaunchScreen.xib */,
+				694E60671B8580FB00F53EA5 /* OptionsCustomTableViewCell.swift */,
+				69BE557F1B1ED84900440C76 /* PlanetaryCustomTableViewCell.swift */,
+				69611DC81B844E7B00118FD8 /* Constants.swift */,
 				69C0AFB91B3E5B2C0007FE70 /* Resources */,
 				69BE555D1B1ED72900440C76 /* Supporting Files */,
 			);
@@ -132,6 +126,9 @@
 		69BE555D1B1ED72900440C76 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				69BE55681B1ED72900440C76 /* LaunchScreen.xib */,
+				69BE555F1B1ED72900440C76 /* AppDelegate.swift */,
+				69BE55661B1ED72900440C76 /* Images.xcassets */,
 				69BE555E1B1ED72900440C76 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -157,15 +154,12 @@
 		69C0AFB91B3E5B2C0007FE70 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6995AAB51B858E0E00868E25 /* unselectedRadioButton.png */,
+				6995AAB61B858E0E00868E25 /* selectedRadioButton.png */,
 				69A7F9B31B226A2B0001ABEE /* redCameraIcon.png */,
-				69444FBF1B655C2300DA1041 /* TRex.jpg */,
 				69BE55831B1EE3B500440C76 /* earth.jpg */,
 				69BE55841B1EE3B500440C76 /* mars.jpg */,
-				69444FC71B655F5900DA1041 /* Spinosaurus.jpg */,
-				69444FC51B655ED800DA1041 /* Indominous_Rex.jpg */,
-				69444FC21B655E3900DA1041 /* Triceratops.jpg */,
 				693B37FB1B3F773400132B15 /* marker-circle.png */,
-				69CD29051B38FC64000AA973 /* camera-icon2.png */,
 				693B37FD1B3F854A00132B15 /* yellowCameraIcon.png */,
 				6946F6F21B39164100DC5262 /* beach.jpg */,
 				6946F6F41B39182700DC5262 /* night-sky.jpg */,
@@ -257,19 +251,16 @@
 				69BE55861B1EE3B500440C76 /* earth.jpg in Resources */,
 				6946F6F31B39164100DC5262 /* beach.jpg in Resources */,
 				69A7F9B51B226A2B0001ABEE /* redCameraIcon.png in Resources */,
-				69444FC61B655ED800DA1041 /* Indominous_Rex.jpg in Resources */,
 				69BE55871B1EE3B500440C76 /* mars.jpg in Resources */,
-				69444FC41B655E3900DA1041 /* Triceratops.jpg in Resources */,
 				69BE55881B1EE3B500440C76 /* pluto.jpg in Resources */,
-				69CD29061B38FC64000AA973 /* camera-icon2.png in Resources */,
 				693B37FC1B3F773400132B15 /* marker-circle.png in Resources */,
 				693B37FE1B3F854A00132B15 /* yellowCameraIcon.png in Resources */,
-				69444FC81B655F5900DA1041 /* Spinosaurus.jpg in Resources */,
 				69BE55651B1ED72900440C76 /* Main.storyboard in Resources */,
-				69444FC01B655C2300DA1041 /* TRex.jpg in Resources */,
 				69BE556A1B1ED72900440C76 /* LaunchScreen.xib in Resources */,
 				69BE55671B1ED72900440C76 /* Images.xcassets in Resources */,
 				6946F6F51B39182700DC5262 /* night-sky.jpg in Resources */,
+				6995AAB71B858E0E00868E25 /* unselectedRadioButton.png in Resources */,
+				6995AAB81B858E0E00868E25 /* selectedRadioButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,12 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				69BE55821B1EDF2600440C76 /* ImageViewController.swift in Sources */,
-				69BE55801B1ED84900440C76 /* CustomTableViewCell.swift in Sources */,
-				69BE55621B1ED72900440C76 /* ViewController.swift in Sources */,
-				69399F4B1B38AA5400342216 /* OptionsViewController.swift in Sources */,
+				69BE55801B1ED84900440C76 /* PlanetaryCustomTableViewCell.swift in Sources */,
+				694E60681B8580FB00F53EA5 /* OptionsCustomTableViewCell.swift in Sources */,
+				694E60641B8570B700F53EA5 /* OptionsTableViewController.swift in Sources */,
+				69BE55621B1ED72900440C76 /* PlanetaryViewController.swift in Sources */,
+				69611DC91B844E7B00118FD8 /* Constants.swift in Sources */,
+				694E60661B857AD400F53EA5 /* NavigationViewController.swift in Sources */,
 				69BE55601B1ED72900440C76 /* AppDelegate.swift in Sources */,
-				69C0AFBB1B3E5D950007FE70 /* NavigationController.swift in Sources */,
-				698BA0261B1FD6D4003973E7 /* RBResizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

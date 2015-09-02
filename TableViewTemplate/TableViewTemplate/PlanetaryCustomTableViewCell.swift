@@ -1,15 +1,15 @@
 //
-//  CustomTableViewCell.swift
+//  PlanetaryCustomTableViewCell.swift
 //  TableViewTemplate
 //
 //  Created by Jake on 6/2/15.
 //  Copyright (c) 2015 Jake. All rights reserved.
 //
-// Custome TableViewCell to remember the titleLabel, subtitleLabel, and imageButton.
+// Custom TableViewCell to remember the titleLabel, subtitleLabel, and imageButton.
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class PlanetaryCustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!

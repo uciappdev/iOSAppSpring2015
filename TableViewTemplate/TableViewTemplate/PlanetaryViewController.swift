@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PlanetaryViewController.swift
 //  TableViewTemplate
 //
 //  Created by Jake on 6/2/15.
@@ -8,19 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate {
 
-    //Constants
-    let isBeachThemeKey = "isBeachThemeKey"
-    let isRedCameraKey = "isRedCameraKey"
-    let redCameraImageFileName = "redCameraIcon.png"
-    let yellowCammeraImageFileName = "yellowCameraIcon.png"
-    let beachImageFileName = "beach.jpg"
-    let spaceImageFileName = "night-sky.jpg"
+class PlanetaryViewController: UIViewController, UITableViewDelegate {
+    
     // Placeholder boolean
     var isBeachTheme = false
     var isRedCameraIcon = false
-
+    
     // StoryBoard objects.
     @IBOutlet weak var myTableView: UITableView!
     @IBAction func imageButtonAction (sender : UIButton!) {
@@ -30,9 +24,9 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     
     // Input data that should be gotten from Database
-    var titleData = ["Earth", "Mars", "Pluto", "TRex", "Triceratops", "Indominous Rex", "Spinosaurus"]
-    var subtitleData = ["Blue planet", "Red planet", "Planet?", "King Lizard", "3 Horn Face", "Death Lizard", "Death Fish"]
-    var imageFileNames = ["earth.jpg", "mars.jpg", "pluto.jpg", "TRex.jpg", "Triceratops.jpg", "Indominous_Rex.jpg", "Spinosaurus.jpg"]
+    var titleData = ["Earth", "Mars", "Pluto"]
+    var subtitleData = ["Blue planet", "Red planet", "Planet?"]
+    var imageFileNames = ["earth.jpg", "mars.jpg", "pluto.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +34,17 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     override func viewWillAppear(animated: Bool) {
         // Load Theme and change UITableView colors
-        isBeachTheme = NSUserDefaults.standardUserDefaults().boolForKey(isBeachThemeKey)
-        isRedCameraIcon = NSUserDefaults.standardUserDefaults().boolForKey(isRedCameraKey)
-        isBeachTheme ? loadTheme(beachImageFileName, color: UIColor.blackColor()) : loadTheme(spaceImageFileName, color: UIColor.whiteColor())
+        if let currentTheme = theme {
+            loadTheme(currentTheme)
+        }
+        else {
+            defaults.setObject(themeData.fileNames[0], forKey: keys[0])
+            loadTheme(theme!)
+        }
+        if icon == nil {
+            defaults.setObject(iconData.fileNames[0], forKey: keys[1])
+        }
+        defaults.synchronize()
         myTableView.reloadData()
     }
 
@@ -56,17 +58,25 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.myTableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
+        let cell = self.myTableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PlanetaryCustomTableViewCell
         if let button = cell.imageButton {
             button.tag = indexPath.row
-            //isRedCameraIcon ?
-            isRedCameraIcon ? button.setImage(UIImage(named: redCameraImageFileName),forState: UIControlState.Normal) : button.setImage(UIImage(named: yellowCammeraImageFileName),forState: UIControlState.Normal)
-            //button.setImage(UIImage(named: imageFileNames[indexPath.row]),forState: UIControlState.Normal)
+            if let currentIcon = icon {
+                button.setImage(UIImage(named: currentIcon), forState: UIControlState.Normal)
+            }
+
             button.addTarget(self, action: "imageButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         }
         cell.titleLabel.text = titleData[indexPath.row]
         cell.subtitleLabel.text = subtitleData[indexPath.row]
-        isBeachTheme ? cell.changeTextColor(UIColor.blackColor()) : cell.changeTextColor(UIColor.whiteColor())
+        
+        if let currentTheme = theme {
+            let color = colorBasedOnTheme(currentTheme)
+            cell.changeTextColor(color)
+        }
+        
+        
+        
         cell.backgroundColor = UIColor.clearColor()
         return cell
     }
@@ -77,7 +87,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         // ADD CODE HERE TO DO SOMETHING WHEN TABLEVIEWCELL TAPPED
     }
     
@@ -91,9 +101,22 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     // Helper functions
-    func loadTheme(imageFileName: String, color: UIColor) {
-        backgroundImage.image = UIImage(named: imageFileName)
-        myTableView.separatorColor = color
+    func colorBasedOnTheme(theme: String) -> UIColor {
+        switch theme {
+        case themeData.fileNames[0]: // Beach Theme
+            return UIColor.blackColor()
+        case themeData.fileNames[1]: // Space Theme
+            return UIColor.whiteColor()
+        default: // This should be changed to a different color
+            return UIColor.redColor()
+        }
     }
+    
+    func loadTheme(imageFileName: String) {
+        backgroundImage.image = UIImage(named: imageFileName)
+        
+        myTableView.separatorColor = colorBasedOnTheme(imageFileName)
+    }
+
 }
 

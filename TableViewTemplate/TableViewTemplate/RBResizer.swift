@@ -66,10 +66,10 @@ func RBResizeImage(image: UIImage?, targetSize: CGSize) -> UIImage? {
 
 func RBShrinkToFit(image: UIImage?, targetSize: CGSize) -> UIImage? {
     // If the image is bigger than the view, scale it to fit inside the view. - Jake
-    if let image = image {
-        let size = image.size
-        let widthRatio  = targetSize.width  / image.size.width
-        let heightRatio = targetSize.height / image.size.height
+    if let newImage = image {
+        let size = newImage.size
+        let widthRatio  = targetSize.width  / newImage.size.width
+        let heightRatio = targetSize.height / newImage.size.height
         
         var newSize : CGSize = size
         if widthRatio > heightRatio {
@@ -85,12 +85,12 @@ func RBShrinkToFit(image: UIImage?, targetSize: CGSize) -> UIImage? {
             }
         }
         
-        // This is the rect that we've calculated out and this is what is actually used below
+        // This is the rect that we've calculated out and what is actually used below
         let rect = CGRectMake(0, 0, newSize.width, newSize.height)
         
         // Actually do the resizing to the rect using the ImageContext stuff
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.drawInRect(rect)
+        newImage.drawInRect(rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

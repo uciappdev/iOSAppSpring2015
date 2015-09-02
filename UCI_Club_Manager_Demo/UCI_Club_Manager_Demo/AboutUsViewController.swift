@@ -1,18 +1,18 @@
 //
-//  NavigationController.swift
-//  TableViewTemplate
+//  AboutUsViewController.swift
+//  UCI_Club_Manager_Demo
 //
-//  Created by Jake on 6/26/15.
+//  Created by Jake on 9/1/15.
 //  Copyright (c) 2015 Jake. All rights reserved.
 //
 
 import UIKit
 
-class NavigationController: UINavigationController {
+class AboutUsViewController: UIViewController {
 
-    var defaults = NSUserDefaults.standardUserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.parentViewController?.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +21,7 @@ class NavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     /*
     // MARK: - Navigation
 
