@@ -11,4 +11,6 @@ import Foundation
 class Settings {
     var getClubTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetClubTable.php"
     var getCategoryTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetCategoryTable.php"
+    var getAboutTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAboutTable.php"
+    var getAnnouncementTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAnnouncementTable.php"
 }

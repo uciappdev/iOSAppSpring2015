@@ -1,28 +1,18 @@
 //
-//  AnnouncementsTableViewController.swift
+//  AnswerTableViewController.swift
 //  UCI_Club_Manager_Demo
 //
-//  Created by Jake on 9/1/15.
+//  Created by Jake on 9/5/15.
 //  Copyright (c) 2015 Jake. All rights reserved.
 //
 
 import UIKit
 
-class AnnouncementsTableViewController: UITableViewController {
-    var clubAnnouncements = [Announcement]()
-    
+class AnswerTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if clubAnnouncements.count == 0 {
-            let tbc = self.tabBarController as! ClubTabBarController
-            
-            var service = Service()
-            service.pull_announcement("\(tbc.club[0].id)") {
-                (response) in
-                self.loadAnnouncement(response)
-            }
-        }
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,48 +30,24 @@ class AnnouncementsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if clubAnnouncements.count == 0 {
-            return 0
-        }
-        return clubAnnouncements.count
+        return 0
     }
 
-    
-    func loadAnnouncement(announcements : NSArray) {
-        
-        for announcement in announcements{
-            var id = (announcement["id"]! as! String).toInt()!
-            var time_stamp = announcement["time_stamp"]! as! String
-            var club_id = announcement["club_id"]! as! String
-            var title = announcement["title"]! as! String
-            var subtitle = announcement["subtitle"] as! String
-            var paragraph = announcement["paragraph"] as! String
-            
-            var clubObj = Announcement(id: id, time_stamp: time_stamp, club_id: club_id, title: title, subtitle: subtitle, paragraph: paragraph)
-            clubAnnouncements.append(clubObj)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    
-    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AnnouncementCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
-        cell.textLabel!.text = clubAnnouncements[indexPath.row].title
 
         return cell
     }
-
+    */
 
     /*
     // Override to support conditional editing of the table view.

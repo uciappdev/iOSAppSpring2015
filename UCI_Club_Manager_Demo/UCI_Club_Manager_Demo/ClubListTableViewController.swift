@@ -13,6 +13,8 @@ class ClubListTableViewController: UITableViewController {
     var clubCollection = [Club]()// {didSet {populateSectionLookUp()}}
     var sectionLookUp = [0]
     
+    var selectedClub = [Club]()
+    
     func populateSectionLookUp () {
         var categoryTracker = clubCollection[0].category
         for (i,club) in enumerate(clubCollection) {
@@ -22,30 +24,33 @@ class ClubListTableViewController: UITableViewController {
             }
         }
         sectionLookUp.append(clubCollection.count)
-        println(sectionLookUp)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        resetValues()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        
-        var service = ClubService()
+        var service = Service()
         //let qos = Int(QOS_CLASS_USER_INITIATED.value)
         
-        service.getClubs {
-            (response) in
-            self.loadClubs(response)
+        if sectionLookUp.count == 1 {
+            service.pull_club {
+                (response) in
+                self.loadClubs(response)
+            }
         }
-        
-        
     }
 
+    func resetValues() {
+        clubCollection.removeAll(keepCapacity: true)
+        sectionLookUp = [0]
+        selectedClub.removeAll(keepCapacity: true)
+    }
     func loadClubs(clubs : NSArray) {
         
         for club in clubs{
@@ -81,7 +86,7 @@ class ClubListTableViewController: UITableViewController {
         if sectionLookUp.count == 1 {
             return 1
         }
-        println("number of sections: \(sectionLookUp.count - 2)")
+        //println("number of sections: \(sectionLookUp.count - 2)")
         return sectionLookUp.count - 1
     }
 
@@ -100,7 +105,7 @@ class ClubListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("club_cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClubCell", forIndexPath: indexPath) as! UITableViewCell
         // Configure the cell...
         
         
@@ -125,10 +130,23 @@ class ClubListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let club = clubCollection[sectionLookUp[indexPath.section] + indexPath.row]
+        selectedClub.append(club)
         performSegueWithIdentifier("toAbout", sender: self)
-        
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var tabBarController = segue.destinationViewController as! ClubTabBarController;
+        tabBarController.club = selectedClub
+        if let vcs = tabBarController.viewControllers {
+            var destinationViewController = vcs[0] as! AboutUsViewController
+            //destinationViewController.club = selectedClub
+            selectedClub.removeAll(keepCapacity: true)
+            //println("passing the club")
+        }
+
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -1,5 +1,5 @@
 //
-//  GetClubsService.swift
+//  Service.swift
 //  UCI_Club_Manager_Demo
 //
 //  Created by Jake on 8/25/15.
@@ -8,14 +8,22 @@
 
 import Foundation
 
-class ClubService {
+class Service {
     var settings:Settings!
     
     init(){
         self.settings = Settings()
     }
     
-    func getClubs(callback: (NSArray) -> ()) {
+    func pull_about(clubId: String, callback: (NSArray) -> ()) {
+        request("\(settings.getAboutTable)?club_id=\(clubId)", callback: callback)
+    }
+    
+    func pull_announcement(clubId: String, callback: (NSArray) -> ()) {
+        request("\(settings.getAnnouncementTable)?club_id=\(clubId)", callback: callback)
+    }
+    
+    func pull_club(callback: (NSArray) -> ()) {
         request(settings.getClubTable, callback: callback)
     }
     
