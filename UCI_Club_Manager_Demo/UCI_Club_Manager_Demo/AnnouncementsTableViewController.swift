@@ -9,52 +9,103 @@
 import UIKit
 
 class AnnouncementsTableViewController: UITableViewController {
-    var clubAnnouncements = [Announcement]()
     
-    override func viewDidLoad() {
+    // Set tableview heights for selected and unselected
+    let SelectedCellHeight: CGFloat = 200.0
+    let UnselectedCellHeight: CGFloat = 112.0
+    
+    var clubAnnouncements = [Announcement]()
+    var lastSelectedCellIndexPath: NSIndexPath?
+
+        override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If properties need to be set, call the web service.
         if clubAnnouncements.count == 0 {
             let tbc = self.tabBarController as! ClubTabBarController
             
             var service = Service()
-            service.pull_announcement("\(tbc.club[0].id)") {
+            service.pull_announcements("\(tbc.club!.id)") {
                 (response) in
-                self.loadAnnouncement(response)
+                self.loadAnnouncements(response)
             }
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+        // If properties haven't been set yet...
         if clubAnnouncements.count == 0 {
             return 0
         }
         return clubAnnouncements.count
     }
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("AnnouncementCell", forIndexPath: indexPath) as! AnnouncementTableViewCell
+        cell.title!.text = clubAnnouncements[indexPath.row].title
+        cell.subtitle!.text = clubAnnouncements[indexPath.row].subtitle
+        cell.time_stamp!.text = clubAnnouncements[indexPath.row].time_stamp
+        //cell.paragraph.text = clubAnnouncements[indexPath.row].paragraph
+        return cell
+    }
     
-    func loadAnnouncement(announcements : NSArray) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! AnnouncementTableViewCell
+        var text : String
+        var resetIndex : NSIndexPath? = nil
         
+        if let lastIndex = lastSelectedCellIndexPath {
+            if lastIndex == indexPath {
+                text = ""
+                lastSelectedCellIndexPath = nil
+            }
+            else {
+                resetIndex = lastIndex
+                
+                text = clubAnnouncements[indexPath.row].paragraph
+                lastSelectedCellIndexPath = indexPath
+            }
+        }
+        else {
+            text = clubAnnouncements[indexPath.row].paragraph
+            lastSelectedCellIndexPath = indexPath
+        }
+
+        tableView.beginUpdates()
+        if let index = resetIndex {
+            resetCell(index)
+            resetIndex = nil
+        }
+        cell.paragraph.text = text
+        cell.paragraph.sizeToFit()
+        tableView.endUpdates()
+    }
+    
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let selectedCellIndexPath = lastSelectedCellIndexPath {
+            if selectedCellIndexPath == indexPath {
+                return SelectedCellHeight
+            }
+        }
+        return UnselectedCellHeight
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Virtually removes the unused tableview cells
+        return 0.01
+    }
+    
+    func loadAnnouncements(announcements : NSArray) {
+        // Create announcement objects and reload the table.
         for announcement in announcements{
             var id = (announcement["id"]! as! String).toInt()!
             var time_stamp = announcement["time_stamp"]! as! String
@@ -71,61 +122,9 @@ class AnnouncementsTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AnnouncementCell", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-        cell.textLabel!.text = clubAnnouncements[indexPath.row].title
-
-        return cell
+    func resetCell (index: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(index) as! AnnouncementTableViewCell
+        cell.paragraph.text = ""
+        cell.paragraph.sizeToFit()
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

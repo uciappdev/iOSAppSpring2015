@@ -13,4 +13,5 @@ class Settings {
     var getCategoryTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetCategoryTable.php"
     var getAboutTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAboutTable.php"
     var getAnnouncementTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAnnouncementTable.php"
+    var getQuestionTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetQuestions.php"
 }

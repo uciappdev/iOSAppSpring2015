@@ -9,8 +9,7 @@
 import UIKit
 
 class AboutUsViewController: UIViewController {
-    //var club = [Club]()
-    var clubAbout = [About]()
+    var clubAbout: About?
 
     
     @IBOutlet weak var aboutParagraph: UILabel!
@@ -18,10 +17,10 @@ class AboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if clubAbout.count != 0 {
-            aboutParagraph.text = clubAbout[0].paragraph
-            if let url = NSURL(string: clubAbout[0].center_photo_url) {
+        
+        if let about = clubAbout {
+            aboutParagraph.text = clubAbout!.paragraph
+            if let url = NSURL(string: clubAbout!.center_photo_url) {
                 if let data = NSData(contentsOfURL: url){
                     aboutCenterPhoto.contentMode = UIViewContentMode.ScaleAspectFit
                     aboutCenterPhoto.image = UIImage(data: data)
@@ -30,11 +29,8 @@ class AboutUsViewController: UIViewController {
         }
         else {
             let tbc = self.tabBarController as! ClubTabBarController
-            
-            println("here")
-            
             var service = Service()
-            service.pull_about("\(tbc.club[0].id)") {
+            service.pull_about("\(tbc.club!.id)") {
                 (response) in
                 self.loadAbout(response)
             }
@@ -43,47 +39,21 @@ class AboutUsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadAbout(clubs : NSArray) {
+        // There should only be one club
+        // Create about object and reload the page.
+        var id = (clubs[0]["id"]! as! String).toInt()!
+        var time_stamp = clubs[0]["time_stamp"]! as! String
+        var club_id = clubs[0]["club_id"]! as! String
+        var paragraph = clubs[0]["paragraph"]! as! String
+        var center_photo_url = clubs[0]["center_photo_url"] as! String
         
-        for club in clubs{
-            var id = (club["id"]! as! String).toInt()!
-            var time_stamp = club["time_stamp"]! as! String
-            var club_id = club["club_id"]! as! String
-            var paragraph = club["paragraph"]! as! String
-            var center_photo_url = club["center_photo_url"] as! String
-            
-            var clubObj = About(id: id, time_stamp: time_stamp, club_id: club_id, paragraph: paragraph, center_photo_url: center_photo_url)
-            clubAbout.append(clubObj)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.viewDidLoad()
-            }
+        var aboutObj = About(id: id, time_stamp: time_stamp, club_id: club_id, paragraph: paragraph, center_photo_url: center_photo_url)
+        clubAbout = aboutObj
+        dispatch_async(dispatch_get_main_queue()) {
+            self.viewDidLoad()
         }
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        
-//        println("here")
-//        var tabBarController = segue.destinationViewController as! ClubTabBarController;
-//        if let vcs = tabBarController.viewControllers {
-//            var destinationViewController = vcs[1] as! AnnouncementsTableViewController
-//            //destinationViewController.club = club
-//            
-//            println("passing the club")
-//        }
-//        
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -10,35 +10,23 @@ import UIKit
 
 
 class ClubListTableViewController: UITableViewController {
-    var clubCollection = [Club]()// {didSet {populateSectionLookUp()}}
+    // Collection of all clubs.
+    var clubCollection = [Club]()
+    // Array used to help determine indexPaths for each club.
+    // [0, ..., # of clubs]
     var sectionLookUp = [0]
     
-    var selectedClub = [Club]()
-    
-    func populateSectionLookUp () {
-        var categoryTracker = clubCollection[0].category
-        for (i,club) in enumerate(clubCollection) {
-            if club.category != categoryTracker {
-                sectionLookUp.append(i)
-                categoryTracker = club.category
-            }
-        }
-        sectionLookUp.append(clubCollection.count)
-    }
+    // Remember the club selected
+    var selectedClub : Club?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Reset values if user returns to page.
         resetValues()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        var service = Service()
-        //let qos = Int(QOS_CLASS_USER_INITIATED.value)
-        
+        // If values values need to be set, run DB web service.  Prevents infinite looping.
         if sectionLookUp.count == 1 {
+            var service = Service()
             service.pull_club {
                 (response) in
                 self.loadClubs(response)
@@ -46,19 +34,70 @@ class ClubListTableViewController: UITableViewController {
         }
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // If values not set yet...
+        if sectionLookUp.count == 1 {
+            return 1
+        }
+        return sectionLookUp.count - 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // If values not set yet...
+        if sectionLookUp.count == 1 {
+            return clubCollection.count
+        }
+        return sectionLookUp[section+1] - sectionLookUp[section]
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClubCell", forIndexPath: indexPath) as! UITableViewCell
+        // Determine index through the sectionLookUp and set the cell's properties.
+        let clubCollectionIndex = sectionLookUp[indexPath.section] + indexPath.row
+        cell.textLabel!.text = clubCollection[clubCollectionIndex].name
+        return cell
+    }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // If values not set yet...
+        if sectionLookUp.count == 1 {
+            return ""
+        }
+        return clubCollection[sectionLookUp[section]].category
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Determine the selected club and initiate segue to ClubTabBarController
+        let club = clubCollection[sectionLookUp[indexPath.section] + indexPath.row]
+        selectedClub = club
+        performSegueWithIdentifier("toTabBarController", sender: self)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Set shared instance of the selected club
+        if let tabBarController = segue.destinationViewController as? ClubTabBarController {
+            tabBarController.club = selectedClub
+        }
+    }
+    
     func resetValues() {
+        // Reset all properties.
         clubCollection.removeAll(keepCapacity: true)
         sectionLookUp = [0]
-        selectedClub.removeAll(keepCapacity: true)
+        selectedClub = nil
     }
+    
     func loadClubs(clubs : NSArray) {
-        
+        // Loop over Array of JSON dictionaries and create Club Objects.  Add Objects to the club collection, reload the table, then populate the section look up array.
         for club in clubs{
             var id = (club["id"]! as! String).toInt()!
             var time_stamp = club["time_stamp"]! as! String
             var name = club["name"]! as! String
             var category = club["category"]! as! String
-            
             var date_started = club["date_started"]! as! String
             var clubObj = Club(id: id, time_stamp: time_stamp, name: name, category: category, date_started: date_started)
             clubCollection.append(clubObj)
@@ -69,129 +108,17 @@ class ClubListTableViewController: UITableViewController {
         populateSectionLookUp()
     }
     
-    
-    
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        if sectionLookUp.count == 1 {
-            return 1
+    func populateSectionLookUp () {
+        // Record the indexes where the club category changed.  Clubs are sorted by (Section, Alphabetical) when pulled from DB.
+        var categoryTracker = clubCollection[0].category
+        for (i,club) in enumerate(clubCollection) {
+            if club.category != categoryTracker {
+                sectionLookUp.append(i)
+                categoryTracker = club.category
+            }
         }
-        //println("number of sections: \(sectionLookUp.count - 2)")
-        return sectionLookUp.count - 1
+        sectionLookUp.append(clubCollection.count)
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        if sectionLookUp.count == 1 {
-            return clubCollection.count
-        }
-        //println("numberOfRowsInSection: \(section),\(sectionLookUp[section+1] - sectionLookUp[section])")
-        return sectionLookUp[section+1] - sectionLookUp[section]
-        
-    }
-    
-    
-
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClubCell", forIndexPath: indexPath) as! UITableViewCell
-        // Configure the cell...
-        
-        
-        if sectionLookUp.count == 1 {
-            cell.textLabel!.text = clubCollection[indexPath.row].name
-        }
-        else {
-            let clubCollectionIndex = sectionLookUp[indexPath.section] + indexPath.row
-            cell.textLabel!.text = clubCollection[clubCollectionIndex].name
-        }
-        return cell
-    }
-
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if sectionLookUp.count == 1 {
-            return ""
-        }
-        
-        return clubCollection[sectionLookUp[section]].category
-
-    }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let club = clubCollection[sectionLookUp[indexPath.section] + indexPath.row]
-        selectedClub.append(club)
-        performSegueWithIdentifier("toAbout", sender: self)
-    }
-
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        var tabBarController = segue.destinationViewController as! ClubTabBarController;
-        tabBarController.club = selectedClub
-        if let vcs = tabBarController.viewControllers {
-            var destinationViewController = vcs[0] as! AboutUsViewController
-            //destinationViewController.club = selectedClub
-            selectedClub.removeAll(keepCapacity: true)
-            //println("passing the club")
-        }
-
-    }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 

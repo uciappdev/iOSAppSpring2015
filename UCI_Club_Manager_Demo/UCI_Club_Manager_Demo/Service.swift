@@ -19,8 +19,12 @@ class Service {
         request("\(settings.getAboutTable)?club_id=\(clubId)", callback: callback)
     }
     
-    func pull_announcement(clubId: String, callback: (NSArray) -> ()) {
+    func pull_announcements(clubId: String, callback: (NSArray) -> ()) {
         request("\(settings.getAnnouncementTable)?club_id=\(clubId)", callback: callback)
+    }
+    
+    func pull_questions(clubId: String, callback: (NSArray) -> ()) {
+        request("\(settings.getQuestionTable)?club_id=\(clubId)", callback: callback)
     }
     
     func pull_club(callback: (NSArray) -> ()) {
@@ -34,8 +38,11 @@ class Service {
             (data, response, error) in
             
             var error:NSError?
-            var response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSArray
-            callback(response)
+            if let response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray {
+                callback(response)
+            }
+
+            
         }
         task.resume()
     }

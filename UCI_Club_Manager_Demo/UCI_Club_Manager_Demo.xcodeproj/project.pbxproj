@@ -11,9 +11,9 @@
 		69188E191B8D7EFF00012C81 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69188E181B8D7EFF00012C81 /* Club.swift */; };
 		69188E1F1B8D857000012C81 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69188E1E1B8D857000012C81 /* Settings.swift */; };
 		69188E231B8D92F900012C81 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69188E201B8D863200012C81 /* Service.swift */; };
+		693AB7821B9C7C6C00078858 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693AB7811B9C7C6C00078858 /* LoginViewController.swift */; };
 		694CA6A51B9BBE9A0044ABE3 /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CA6A41B9BBE9A0044ABE3 /* QuestionTableViewController.swift */; };
-		694CA6A71B9BBEC00044ABE3 /* AnswerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CA6A61B9BBEC00044ABE3 /* AnswerTableViewController.swift */; };
-		694CA6B01B9BC1540044ABE3 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CA6AF1B9BC1540044ABE3 /* ResultsViewController.swift */; };
+		694CA6B01B9BC1540044ABE3 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CA6AF1B9BC1540044ABE3 /* AnswerViewController.swift */; };
 		694FE7DA1B8C403A00C1B51B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE7D91B8C403A00C1B51B /* AppDelegate.swift */; };
 		694FE7E11B8C403A00C1B51B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 694FE7DF1B8C403A00C1B51B /* Main.storyboard */; };
 		694FE7E31B8C403A00C1B51B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 694FE7E21B8C403A00C1B51B /* Images.xcassets */; };
@@ -21,10 +21,13 @@
 		694FE7F21B8C403A00C1B51B /* UCI_Club_Manager_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE7F11B8C403A00C1B51B /* UCI_Club_Manager_DemoTests.swift */; };
 		696297AE1B9BDA3300B0D0D1 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696297AD1B9BDA3300B0D0D1 /* About.swift */; };
 		696297B21B9BFAE300B0D0D1 /* ClubTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696297B11B9BFAE300B0D0D1 /* ClubTabBarController.swift */; };
-		696297B41B9C0F9D00B0D0D1 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696297B31B9C0F9D00B0D0D1 /* Announcements.swift */; };
+		696297B41B9C0F9D00B0D0D1 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696297B31B9C0F9D00B0D0D1 /* Announcement.swift */; };
 		697761F21B96B4E200181206 /* AnnouncementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697761F11B96B4E200181206 /* AnnouncementsTableViewController.swift */; };
 		697761F41B96B68100181206 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697761F31B96B68100181206 /* AboutUsViewController.swift */; };
 		697761F61B96B6DA00181206 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697761F51B96B6DA00181206 /* ContactUsViewController.swift */; };
+		69B7B0881B9C94F0008285B4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B7B0871B9C94F0008285B4 /* AnnouncementTableViewCell.swift */; };
+		69D7B5AC1B9E829C0019084E /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D7B5AB1B9E829C0019084E /* Question.swift */; };
+		69F27C231B9EA79F00709011 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F27C221B9EA79F00709011 /* QuestionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +45,9 @@
 		69188E181B8D7EFF00012C81 /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		69188E1E1B8D857000012C81 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		69188E201B8D863200012C81 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		693AB7811B9C7C6C00078858 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		694CA6A41B9BBE9A0044ABE3 /* QuestionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
-		694CA6A61B9BBEC00044ABE3 /* AnswerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewController.swift; sourceTree = "<group>"; };
-		694CA6AF1B9BC1540044ABE3 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = ../ResultsViewController.swift; sourceTree = "<group>"; };
+		694CA6AF1B9BC1540044ABE3 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerViewController.swift; path = ../AnswerViewController.swift; sourceTree = "<group>"; };
 		694FE7D41B8C403A00C1B51B /* UCI_Club_Manager_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UCI_Club_Manager_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		694FE7D81B8C403A00C1B51B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		694FE7D91B8C403A00C1B51B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,10 +59,13 @@
 		694FE7F11B8C403A00C1B51B /* UCI_Club_Manager_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCI_Club_Manager_DemoTests.swift; sourceTree = "<group>"; };
 		696297AD1B9BDA3300B0D0D1 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		696297B11B9BFAE300B0D0D1 /* ClubTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClubTabBarController.swift; path = ../ClubTabBarController.swift; sourceTree = "<group>"; };
-		696297B31B9C0F9D00B0D0D1 /* Announcements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
+		696297B31B9C0F9D00B0D0D1 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		697761F11B96B4E200181206 /* AnnouncementsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsTableViewController.swift; sourceTree = "<group>"; };
 		697761F31B96B68100181206 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		697761F51B96B6DA00181206 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		69B7B0871B9C94F0008285B4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		69D7B5AB1B9E829C0019084E /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		69F27C221B9EA79F00709011 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,8 @@
 			children = (
 				69188E181B8D7EFF00012C81 /* Club.swift */,
 				696297AD1B9BDA3300B0D0D1 /* About.swift */,
-				696297B31B9C0F9D00B0D0D1 /* Announcements.swift */,
+				696297B31B9C0F9D00B0D0D1 /* Announcement.swift */,
+				69D7B5AB1B9E829C0019084E /* Question.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -103,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				694CA6A41B9BBE9A0044ABE3 /* QuestionTableViewController.swift */,
-				694CA6A61B9BBEC00044ABE3 /* AnswerTableViewController.swift */,
-				694CA6AF1B9BC1540044ABE3 /* ResultsViewController.swift */,
+				694CA6AF1B9BC1540044ABE3 /* AnswerViewController.swift */,
+				69F27C221B9EA79F00709011 /* QuestionTableViewCell.swift */,
 			);
 			name = Polls;
 			sourceTree = "<group>";
@@ -121,6 +128,7 @@
 		694CA6AA1B9BC0150044ABE3 /* Announcements */ = {
 			isa = PBXGroup;
 			children = (
+				69B7B0871B9C94F0008285B4 /* AnnouncementTableViewCell.swift */,
 				697761F11B96B4E200181206 /* AnnouncementsTableViewController.swift */,
 			);
 			name = Announcements;
@@ -149,6 +157,7 @@
 			children = (
 				694FE7DF1B8C403A00C1B51B /* Main.storyboard */,
 				696297B11B9BFAE300B0D0D1 /* ClubTabBarController.swift */,
+				693AB7811B9C7C6C00078858 /* LoginViewController.swift */,
 				69188E161B8D7B5C00012C81 /* ClubListTableViewController.swift */,
 				694CA6A91B9BBFFE0044ABE3 /* About_Us */,
 				694CA6AA1B9BC0150044ABE3 /* Announcements */,
@@ -288,18 +297,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				694CA6B01B9BC1540044ABE3 /* ResultsViewController.swift in Sources */,
+				694CA6B01B9BC1540044ABE3 /* AnswerViewController.swift in Sources */,
 				696297AE1B9BDA3300B0D0D1 /* About.swift in Sources */,
 				694FE7DA1B8C403A00C1B51B /* AppDelegate.swift in Sources */,
+				693AB7821B9C7C6C00078858 /* LoginViewController.swift in Sources */,
 				694CA6A51B9BBE9A0044ABE3 /* QuestionTableViewController.swift in Sources */,
 				69188E231B8D92F900012C81 /* Service.swift in Sources */,
 				69188E191B8D7EFF00012C81 /* Club.swift in Sources */,
-				696297B41B9C0F9D00B0D0D1 /* Announcements.swift in Sources */,
+				696297B41B9C0F9D00B0D0D1 /* Announcement.swift in Sources */,
+				69B7B0881B9C94F0008285B4 /* AnnouncementTableViewCell.swift in Sources */,
 				697761F61B96B6DA00181206 /* ContactUsViewController.swift in Sources */,
+				69D7B5AC1B9E829C0019084E /* Question.swift in Sources */,
 				697761F41B96B68100181206 /* AboutUsViewController.swift in Sources */,
 				69188E171B8D7B5C00012C81 /* ClubListTableViewController.swift in Sources */,
-				694CA6A71B9BBEC00044ABE3 /* AnswerTableViewController.swift in Sources */,
 				69188E1F1B8D857000012C81 /* Settings.swift in Sources */,
+				69F27C231B9EA79F00709011 /* QuestionTableViewCell.swift in Sources */,
 				696297B21B9BFAE300B0D0D1 /* ClubTabBarController.swift in Sources */,
 				697761F21B96B4E200181206 /* AnnouncementsTableViewController.swift in Sources */,
 			);
