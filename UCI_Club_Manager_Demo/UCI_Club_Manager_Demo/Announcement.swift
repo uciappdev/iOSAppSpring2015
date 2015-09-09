@@ -9,14 +9,14 @@
 import Foundation
 
 class Announcement {
-    var id: Int
+    var id: String
     var time_stamp: String
     var club_id: String
     var title: String
     var subtitle: String
     var paragraph: String
     
-    init(id: Int, time_stamp: String, club_id: String, title: String, subtitle: String, paragraph: String) {
+    init(id: String, time_stamp: String, club_id: String, title: String, subtitle: String, paragraph: String) {
         self.id = id
         self.time_stamp = time_stamp
         self.club_id = club_id

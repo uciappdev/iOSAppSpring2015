@@ -107,7 +107,7 @@ class AnnouncementsTableViewController: UITableViewController {
     func loadAnnouncements(announcements : NSArray) {
         // Create announcement objects and reload the table.
         for announcement in announcements{
-            var id = (announcement["id"]! as! String).toInt()!
+            var id = announcement["id"]! as! String
             var time_stamp = announcement["time_stamp"]! as! String
             var club_id = announcement["club_id"]! as! String
             var title = announcement["title"]! as! String

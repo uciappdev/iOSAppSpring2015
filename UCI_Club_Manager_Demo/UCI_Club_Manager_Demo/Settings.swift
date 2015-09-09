@@ -9,9 +9,12 @@
 import Foundation
 
 class Settings {
-    var getClubTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetClubTable.php"
-    var getCategoryTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetCategoryTable.php"
-    var getAboutTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAboutTable.php"
-    var getAnnouncementTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAnnouncementTable.php"
-    var getQuestionTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetQuestions.php"
+    let getClubTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetClubTable.php"
+    let getCategoryTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetCategoryTable.php"
+    let getAboutTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAboutTable.php"
+    let getAnnouncementTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetAnnouncementTable.php"
+    let getQuestionTable = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetQuestions.php"
+    let getVoteCount = "http://clubs.uci.edu/appdev/UCI_Club_Manager/GetQuestionVotes.php"
+    
+    let incrementVoteCount = "http://clubs.uci.edu/appdev/UCI_Club_Manager/IncrementVoteCount.php"
 }

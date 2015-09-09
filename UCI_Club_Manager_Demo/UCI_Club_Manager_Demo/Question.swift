@@ -9,7 +9,7 @@
 import Foundation
 
 class Question {
-    var id: Int
+    var id: String
     var time_stamp: String
     var club_id: String
     var question: String
@@ -24,7 +24,7 @@ class Question {
     var answer_4_votes: String
     var answer_5_votes: String
     
-    init(id: Int, time_stamp: String, club_id: String, question: String,
+    init(id: String, time_stamp: String, club_id: String, question: String,
         answer_1: String, answer_2: String, answer_3: String, answer_4: String, answer_5: String,
         answer_1_votes: String, answer_2_votes: String, answer_3_votes: String, answer_4_votes: String, answer_5_votes: String) {
         self.id = id

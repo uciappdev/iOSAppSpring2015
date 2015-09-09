@@ -74,7 +74,7 @@ class QuestionTableViewController: UITableViewController {
     func loadQuestions(questions : NSArray) {
         // Create announcement objects and reload the table.
         for question in questions{
-            var id = (question["id"]! as! String).toInt()!
+            var id = question["id"]! as! String
             var time_stamp = question["time_stamp"]! as! String
             var club_id = question["club_id"]! as! String
             var q = question["question"]! as! String

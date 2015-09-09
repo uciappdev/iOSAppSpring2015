@@ -15,34 +15,52 @@ class Service {
         self.settings = Settings()
     }
     
+    func increment_vote(questionId: String, voteNum: Int) {
+        let url = "\(settings.incrementVoteCount)?question_id=\(questionId)&answer_vote_num=\(voteNum+1)"
+        requestUpdate(url)
+    }
+    
     func pull_about(clubId: String, callback: (NSArray) -> ()) {
-        request("\(settings.getAboutTable)?club_id=\(clubId)", callback: callback)
+        requestPull("\(settings.getAboutTable)?club_id=\(clubId)", callback: callback)
     }
     
     func pull_announcements(clubId: String, callback: (NSArray) -> ()) {
-        request("\(settings.getAnnouncementTable)?club_id=\(clubId)", callback: callback)
+        requestPull("\(settings.getAnnouncementTable)?club_id=\(clubId)", callback: callback)
     }
     
     func pull_questions(clubId: String, callback: (NSArray) -> ()) {
-        request("\(settings.getQuestionTable)?club_id=\(clubId)", callback: callback)
+        requestPull("\(settings.getQuestionTable)?club_id=\(clubId)", callback: callback)
     }
     
     func pull_club(callback: (NSArray) -> ()) {
-        request(settings.getClubTable, callback: callback)
+        requestPull(settings.getClubTable, callback: callback)
     }
     
-    func request(url:String, callback: (NSArray -> ())) {
+    func pull_vote_count(questionId: String, callback: (NSArray) -> ()) {
+        requestPull("\(settings.getVoteCount)?question_id=\(questionId)", callback: callback)
+    }
+    
+    func requestPull(url:String, callback: (NSArray -> ()), pull:Bool = true) {
         let nsURL = NSURL(string: url)!
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL) {
             (data, response, error) in
             
             var error:NSError?
-            if let response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray {
-                callback(response)
+            if pull {
+                if let response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray {
+                    callback(response)
+                }
             }
-
-            
+        }
+        task.resume()
+    }
+    
+    func requestUpdate(url: String) {
+        let nsURL = NSURL(string: url)!
+        let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL) {
+            (data, response, error) -> Void in
+            var error:NSError?
         }
         task.resume()
     }

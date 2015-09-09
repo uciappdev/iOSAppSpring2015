@@ -202,6 +202,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="answerPickerView" destination="jRF-Jb-s1F" id="RVC-vx-hgj"/>
                         <outlet property="pollResultLabel" destination="wfp-sh-6ys" id="Soj-0l-fwv"/>
                         <outlet property="questionLabel" destination="G3Z-aH-4tl" id="6VK-mq-J72"/>
                     </connections>

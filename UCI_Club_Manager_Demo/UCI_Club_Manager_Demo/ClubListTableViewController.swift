@@ -94,7 +94,7 @@ class ClubListTableViewController: UITableViewController {
     func loadClubs(clubs : NSArray) {
         // Loop over Array of JSON dictionaries and create Club Objects.  Add Objects to the club collection, reload the table, then populate the section look up array.
         for club in clubs{
-            var id = (club["id"]! as! String).toInt()!
+            var id = club["id"]! as! String
             var time_stamp = club["time_stamp"]! as! String
             var name = club["name"]! as! String
             var category = club["category"]! as! String

@@ -44,7 +44,7 @@ class AboutUsViewController: UIViewController {
     func loadAbout(clubs : NSArray) {
         // There should only be one club
         // Create about object and reload the page.
-        var id = (clubs[0]["id"]! as! String).toInt()!
+        var id = clubs[0]["id"]! as! String
         var time_stamp = clubs[0]["time_stamp"]! as! String
         var club_id = clubs[0]["club_id"]! as! String
         var paragraph = clubs[0]["paragraph"]! as! String
