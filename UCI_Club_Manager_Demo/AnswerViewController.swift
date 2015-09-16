@@ -7,18 +7,16 @@
 //
 
 import UIKit
-
+import Charts
 class AnswerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     var question: Question?
     var answerList = [String]()
-    
     var voteCount: VoteCount?
     
     @IBOutlet weak var questionLabel: UILabel!
-    
     @IBOutlet weak var answerPickerView: UIPickerView!
-    @IBOutlet weak var pollResultLabel: UILabel!
+    @IBOutlet weak var barChartView: BarChartView!
     
     @IBAction func submitButton(sender: UIButton) {
         //push to database and reveal the current results.
@@ -33,12 +31,14 @@ class AnswerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         super.viewDidLoad()
         
         if let voteCount = voteCount {
-            pollResultLabel.text = "\(voteCount.vote_list)"
-            pollResultLabel.hidden = false
+            barChartView.descriptionText = "Poll Results"
+            barChartView.xAxis.labelPosition = .Bottom
+            barChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+            barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+            setChart(answerList, values: voteCount.vote_list)
         }
         else {
             questionLabel.text = question!.question
-            pollResultLabel.hidden = true
         }
     }
 
@@ -62,28 +62,43 @@ class AnswerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             (response) in
             self.loadVoteCount(response)
         }
-        
     }
     
     func loadVoteCount(votes : NSArray) {
         // Create announcement objects and reload the table.
         
-        var answer_1_votes = (votes[0]["answer_1_votes"]! as! String).toInt()!
-        var answer_2_votes = (votes[0]["answer_2_votes"]! as! String).toInt()!
-        var answer_3_votes = (votes[0]["answer_3_votes"]! as! String).toInt()!
-        var answer_4_votes = (votes[0]["answer_4_votes"]! as! String).toInt()!
-        var answer_5_votes = (votes[0]["answer_5_votes"]! as! String).toInt()!
+        var answer_1_votes = (votes[0]["answer_1_votes"] as! NSString).doubleValue
+        var answer_2_votes = (votes[0]["answer_2_votes"]! as! NSString).doubleValue
+        var answer_3_votes = (votes[0]["answer_3_votes"]! as! NSString).doubleValue
+        var answer_4_votes = (votes[0]["answer_4_votes"]! as! NSString).doubleValue
+        var answer_5_votes = (votes[0]["answer_5_votes"]! as! NSString).doubleValue
         var vote_list = [answer_1_votes, answer_2_votes, answer_3_votes, answer_4_votes, answer_5_votes]
         var total_votes = vote_list.reduce(0, combine: +)
         
         var clubObj = VoteCount(answer_1_votes: answer_1_votes, answer_2_votes: answer_2_votes, answer_3_votes:answer_3_votes, answer_4_votes: answer_4_votes, answer_5_votes: answer_5_votes, vote_list: vote_list, total_votes: total_votes)
         
         voteCount = clubObj
+        
         dispatch_async(dispatch_get_main_queue()) {
             self.viewDidLoad()
         }
     }
 
+    func setChart(dataPoints: [String], values: [Double]) {
+        barChartView.noDataText = "You need to provide data for the chart."
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Votes")
+        chartDataSet.colors = ChartColorTemplates.joyful()
+        let chartData = BarChartData(xVals: answerList, dataSet: chartDataSet)
+        barChartView.data = chartData
+    }
 
 
 }

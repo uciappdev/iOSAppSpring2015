@@ -28,6 +28,8 @@
 		69B7B0881B9C94F0008285B4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B7B0871B9C94F0008285B4 /* AnnouncementTableViewCell.swift */; };
 		69D7B5AC1B9E829C0019084E /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D7B5AB1B9E829C0019084E /* Question.swift */; };
 		69E0FA671B9FB78E00979B98 /* VoteCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E0FA661B9FB78E00979B98 /* VoteCount.swift */; };
+		69E0FA6E1B9FCAB100979B98 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E0FA6D1B9FCA9100979B98 /* Charts.framework */; };
+		69E0FA6F1B9FCAB100979B98 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69E0FA6D1B9FCA9100979B98 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69F27C231B9EA79F00709011 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F27C221B9EA79F00709011 /* QuestionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +41,35 @@
 			remoteGlobalIDString = 694FE7D31B8C403A00C1B51B;
 			remoteInfo = UCI_Club_Manager_Demo;
 		};
+		69E0FA6C1B9FCA9100979B98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69E0FA681B9FCA9000979B98 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
+		69E0FA701B9FCAB200979B98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69E0FA681B9FCA9000979B98 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		69E0FA721B9FCAB200979B98 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				69E0FA6F1B9FCAB100979B98 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		69188E161B8D7B5C00012C81 /* ClubListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubListTableViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +97,7 @@
 		69B7B0871B9C94F0008285B4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		69D7B5AB1B9E829C0019084E /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		69E0FA661B9FB78E00979B98 /* VoteCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteCount.swift; sourceTree = "<group>"; };
+		69E0FA681B9FCA9000979B98 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../App_Projects/ios-charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		69F27C221B9EA79F00709011 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69E0FA6E1B9FCAB100979B98 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				694FE7D61B8C403A00C1B51B /* UCI_Club_Manager_Demo */,
+				69E0FA681B9FCA9000979B98 /* Charts.xcodeproj */,
 				694FE7EE1B8C403A00C1B51B /* UCI_Club_Manager_DemoTests */,
 				694FE7D51B8C403A00C1B51B /* Products */,
 			);
@@ -200,6 +233,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		69E0FA691B9FCA9000979B98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69E0FA6D1B9FCA9100979B98 /* Charts.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,10 +251,12 @@
 				694FE7D01B8C403A00C1B51B /* Sources */,
 				694FE7D11B8C403A00C1B51B /* Frameworks */,
 				694FE7D21B8C403A00C1B51B /* Resources */,
+				69E0FA721B9FCAB200979B98 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				69E0FA711B9FCAB200979B98 /* PBXTargetDependency */,
 			);
 			name = UCI_Club_Manager_Demo;
 			productName = UCI_Club_Manager_Demo;
@@ -267,6 +310,12 @@
 			mainGroup = 694FE7CB1B8C403A00C1B51B;
 			productRefGroup = 694FE7D51B8C403A00C1B51B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 69E0FA691B9FCA9000979B98 /* Products */;
+					ProjectRef = 69E0FA681B9FCA9000979B98 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				694FE7D31B8C403A00C1B51B /* UCI_Club_Manager_Demo */,
@@ -274,6 +323,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		69E0FA6D1B9FCA9100979B98 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 69E0FA6C1B9FCA9100979B98 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		694FE7D21B8C403A00C1B51B /* Resources */ = {
@@ -336,6 +395,11 @@
 			isa = PBXTargetDependency;
 			target = 694FE7D31B8C403A00C1B51B /* UCI_Club_Manager_Demo */;
 			targetProxy = 694FE7EC1B8C403A00C1B51B /* PBXContainerItemProxy */;
+		};
+		69E0FA711B9FCAB200979B98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 69E0FA701B9FCAB200979B98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

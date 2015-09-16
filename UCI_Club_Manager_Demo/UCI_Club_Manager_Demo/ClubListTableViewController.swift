@@ -74,6 +74,8 @@ class ClubListTableViewController: UITableViewController {
         // Determine the selected club and initiate segue to ClubTabBarController
         let club = clubCollection[sectionLookUp[indexPath.section] + indexPath.row]
         selectedClub = club
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
         performSegueWithIdentifier("toTabBarController", sender: self)
     }
 

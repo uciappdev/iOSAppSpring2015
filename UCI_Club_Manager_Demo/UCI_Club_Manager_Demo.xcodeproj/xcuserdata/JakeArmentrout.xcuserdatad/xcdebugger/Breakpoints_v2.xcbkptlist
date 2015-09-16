@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCI_Club_Manager_Demo/AboutUsViewController.swift"
-            timestampString = "463343745.047522"
+            timestampString = "464053778.157496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "loadAbout(_:)"
             landmarkType = "5">
          </BreakpointContent>

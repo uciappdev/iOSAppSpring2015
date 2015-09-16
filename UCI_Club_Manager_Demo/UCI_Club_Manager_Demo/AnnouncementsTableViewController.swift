@@ -84,12 +84,12 @@ class AnnouncementsTableViewController: UITableViewController {
             resetCell(index)
             resetIndex = nil
         }
-        cell.paragraph.text = text
         cell.paragraph.sizeToFit()
+        //cell.paragraph.text = text
         tableView.endUpdates()
+        cell.paragraph.text = text
     }
     
-
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let selectedCellIndexPath = lastSelectedCellIndexPath {
             if selectedCellIndexPath == indexPath {

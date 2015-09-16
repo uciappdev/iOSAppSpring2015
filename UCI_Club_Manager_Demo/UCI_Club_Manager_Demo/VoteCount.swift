@@ -10,15 +10,15 @@ import Foundation
 
 class VoteCount {
 
-    var answer_1_votes: Int
-    var answer_2_votes: Int
-    var answer_3_votes: Int
-    var answer_4_votes: Int
-    var answer_5_votes: Int
-    var vote_list: [Int]
-    var total_votes: Int
+    var answer_1_votes: Double
+    var answer_2_votes: Double
+    var answer_3_votes: Double
+    var answer_4_votes: Double
+    var answer_5_votes: Double
+    var vote_list: [Double]
+    var total_votes: Double
     
-    init(answer_1_votes: Int, answer_2_votes: Int, answer_3_votes: Int, answer_4_votes: Int, answer_5_votes: Int, vote_list: [Int], total_votes: Int) {
+    init(answer_1_votes: Double, answer_2_votes: Double, answer_3_votes: Double, answer_4_votes: Double, answer_5_votes: Double, vote_list: [Double], total_votes: Double) {
 
         self.answer_1_votes = answer_1_votes
         self.answer_2_votes = answer_2_votes
