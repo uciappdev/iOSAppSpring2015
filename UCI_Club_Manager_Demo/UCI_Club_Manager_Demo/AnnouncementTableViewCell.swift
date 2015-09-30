@@ -20,7 +20,7 @@ class AnnouncementTableViewCell: UITableViewCell {
     @IBOutlet weak var time_stamp: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        paragraph.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        //paragraph.lineBreakMode = NSLineBreakMode.ByWordWrapping
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -19,7 +19,7 @@ class QuestionTableViewController: UITableViewController {
         if clubQuestions.count == 0 {
             let tbc = self.tabBarController as! ClubTabBarController
             
-            var service = Service()
+            let service = Service()
             service.pull_questions("\(tbc.club!.id)") {
                 (response) in
                 self.loadQuestions(response)
@@ -61,10 +61,15 @@ class QuestionTableViewController: UITableViewController {
         return cellHeight
     }
     
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Virtually removes the unused tableview cells
+        return 0.01
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let avc = segue.destinationViewController as? AnswerViewController {
             avc.question = selectedQuestion!
-            var ansList = [selectedQuestion!.answer_1, selectedQuestion!.answer_2, selectedQuestion!.answer_3, selectedQuestion!.answer_4, selectedQuestion!.answer_5]
+            let ansList = [selectedQuestion!.answer_1, selectedQuestion!.answer_2, selectedQuestion!.answer_3, selectedQuestion!.answer_4, selectedQuestion!.answer_5]
             avc.answerList = ansList
         }
     }
@@ -74,22 +79,22 @@ class QuestionTableViewController: UITableViewController {
     func loadQuestions(questions : NSArray) {
         // Create announcement objects and reload the table.
         for question in questions{
-            var id = question["id"]! as! String
-            var time_stamp = question["time_stamp"]! as! String
-            var club_id = question["club_id"]! as! String
-            var q = question["question"]! as! String
-            var answer_1 = question["answer_1"]! as! String
-            var answer_2 = question["answer_2"]! as! String
-            var answer_3 = question["answer_3"]! as! String
-            var answer_4 = question["answer_4"]! as! String
-            var answer_5 = question["answer_5"]! as! String
-            var answer_1_votes = question["answer_1_votes"]! as! String
-            var answer_2_votes = question["answer_2_votes"]! as! String
-            var answer_3_votes = question["answer_3_votes"]! as! String
-            var answer_4_votes = question["answer_4_votes"]! as! String
-            var answer_5_votes = question["answer_5_votes"]! as! String
+            let id = question["id"]! as! String
+            let time_stamp = question["time_stamp"]! as! String
+            let club_id = question["club_id"]! as! String
+            let q = question["question"]! as! String
+            let answer_1 = question["answer_1"]! as! String
+            let answer_2 = question["answer_2"]! as! String
+            let answer_3 = question["answer_3"]! as! String
+            let answer_4 = question["answer_4"]! as! String
+            let answer_5 = question["answer_5"]! as! String
+            let answer_1_votes = question["answer_1_votes"]! as! String
+            let answer_2_votes = question["answer_2_votes"]! as! String
+            let answer_3_votes = question["answer_3_votes"]! as! String
+            let answer_4_votes = question["answer_4_votes"]! as! String
+            let answer_5_votes = question["answer_5_votes"]! as! String
             
-            var clubObj = Question(id: id, time_stamp: time_stamp, club_id: club_id,question: q, answer_1: answer_1, answer_2: answer_2, answer_3: answer_3, answer_4: answer_4, answer_5: answer_5, answer_1_votes: answer_1_votes, answer_2_votes: answer_2_votes, answer_3_votes:answer_3_votes, answer_4_votes: answer_4_votes, answer_5_votes: answer_5_votes)
+            let clubObj = Question(id: id, time_stamp: time_stamp, club_id: club_id,question: q, answer_1: answer_1, answer_2: answer_2, answer_3: answer_3, answer_4: answer_4, answer_5: answer_5, answer_1_votes: answer_1_votes, answer_2_votes: answer_2_votes, answer_3_votes:answer_3_votes, answer_4_votes: answer_4_votes, answer_5_votes: answer_5_votes)
             clubQuestions.append(clubObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()

@@ -14,23 +14,18 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
     // Storyboard objects
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var popUpImage: UIImageView!
-    
-    @IBAction func exitPopUp(sender: UIButton) {
-        //println("pop up exit")
-        let value = UIInterfaceOrientation.Portrait.rawValue
-        UIDevice.currentDevice().setValue(value, forKey: "orientation")
-        allowRotate = false
-        popUpView.hidden = true
-    }
-
     @IBOutlet weak var paragraph: UILabel!
+    @IBOutlet weak var websiteLink: UIButton!
+    @IBAction func websiteAction(sender: UIButton) {
+        
+    }
+    @IBOutlet weak var emailLink: UIButton!
+    @IBAction func emailAction(sender: UIButton) {
+    }
     
     // Activity indicator pop up objects
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     
     // MARK: Variables
     // Constant that states the number of pages.
@@ -43,12 +38,12 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
     var allowRotate = false
     // Remember the current page selected
     var currentPage: Int!
-    // To remember if the the size has already been set.
-    var pagesScrollViewSize: CGSize?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //println("viewDIdLoad")
+        
+        currentPage = 0
         
         // Set the number of pages for the page control
         pageControl.numberOfPages = pageCount
@@ -59,26 +54,15 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // Call the web service if hadn't already
-        if let about = clubAbout {
+        if let _ = clubAbout {
         }
         else {
             let tbc = self.tabBarController as! ClubTabBarController
-            var service = Service()
+            let service = Service()
             service.pull_about("\(tbc.club!.id)") {
                 (response) in
                 self.loadAbout(response)
             }
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        //println("viewDidLayoutSubviews")
-        // Set up the content size of the scroll view because the viewDidLoad doesn't know about object sizes yet.
-        if let pageSize = pagesScrollViewSize {
-        }
-        else {
-            pagesScrollViewSize = scrollView.frame.size
-            scrollView.contentSize = CGSizeMake(pagesScrollViewSize!.width * CGFloat(pageCount), pagesScrollViewSize!.height)
         }
     }
     
@@ -87,20 +71,22 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadAbout(clubs : NSArray) {
-        println("loadAbout")
+        print("loadAbout")
         // There should only be one club
         // Create about object and reload the page.
-        var id = clubs[0]["id"]! as! String
-        var time_stamp = clubs[0]["time_stamp"]! as! String
-        var club_id = clubs[0]["club_id"]! as! String
-        var paragraph = clubs[0]["paragraph"]! as! String
-        var far_left_photo_url = clubs[0]["far_left_photo_url"]! as! String
-        var left_photo_url = clubs[0]["left_photo_url"]! as! String
-        var center_photo_url = clubs[0]["center_photo_url"]! as! String
-        var right_photo_url = clubs[0]["right_photo_url"]! as! String
-        var far_right_photo_url = clubs[0]["far_right_photo_url"]! as! String
+        let id = clubs[0]["id"]! as! String
+        let time_stamp = clubs[0]["time_stamp"]! as! String
+        let club_id = clubs[0]["club_id"]! as! String
+        let paragraph = clubs[0]["paragraph"]! as! String
+        let email = clubs[0]["email"]! as! String
+        let website = clubs[0]["website"]! as! String
+        let far_left_photo_url = clubs[0]["far_left_photo_url"]! as! String
+        let left_photo_url = clubs[0]["left_photo_url"]! as! String
+        let center_photo_url = clubs[0]["center_photo_url"]! as! String
+        let right_photo_url = clubs[0]["right_photo_url"]! as! String
+        let far_right_photo_url = clubs[0]["far_right_photo_url"]! as! String
         
-        var aboutObj = About(id: id, time_stamp: time_stamp, club_id: club_id, paragraph: paragraph, far_left_photo_url: far_left_photo_url, left_photo_url: left_photo_url, center_photo_url: center_photo_url, right_photo_url: right_photo_url, far_right_photo_url: far_right_photo_url)
+        let aboutObj = About(id: id, time_stamp: time_stamp, club_id: club_id, paragraph: paragraph, email: email, website: website, far_left_photo_url: far_left_photo_url, left_photo_url: left_photo_url, center_photo_url: center_photo_url, right_photo_url: right_photo_url, far_right_photo_url: far_right_photo_url)
         filePaths.append(far_left_photo_url)
         filePaths.append(left_photo_url)
         filePaths.append(center_photo_url)
@@ -108,17 +94,21 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
         filePaths.append(far_right_photo_url)
         clubAbout = aboutObj
         dispatch_async(dispatch_get_main_queue()) {
+            self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * CGFloat(self.pageCount), 1.0)
             self.loadImageViews()
             //println("calling loadVisiblePages")
             self.activityIndicator.stopAnimating()
             self.activityView.hidden = true
             self.paragraph.text = self.clubAbout!.paragraph
+            self.emailLink.setTitle(self.clubAbout!.email, forState: .Normal)
+            self.websiteLink.setTitle(self.clubAbout!.website, forState: .Normal)
+            
         }
     }
     
     func loadImageViews () {
         // For each image file path, load the image.
-        for (page,file) in enumerate(filePaths) {
+        for (page,file) in filePaths.enumerate() {
             var frame = scrollView.bounds
             frame.origin.x = frame.size.width * CGFloat(page)
             frame.origin.y = 0.0
@@ -131,7 +121,7 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
             newPageView.frame = frame
             
             // Enable taps
-            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+            let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
             newPageView.addGestureRecognizer(tapGestureRecognizer)
             newPageView.userInteractionEnabled = true
             
@@ -141,12 +131,11 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        //loadVisiblePages()
         // First, determine which page is currently visible
         let pageWidth = scrollView.frame.size.width
         currentPage = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
-        //println("page: \(currentPage)")
+        print("page: \(currentPage)")
         
         // Update the page control
         pageControl.currentPage = currentPage
@@ -154,14 +143,10 @@ class AboutUsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func imageTapped(gestureRecognizer: UITapGestureRecognizer) {
-        //println("image tapped")
-        
-        popUpImage.image = pageViews[currentPage]!.image
-        popUpView.hidden = false
-        allowRotate = true
-    }
-    
-    override func shouldAutorotate() -> Bool {
-        return allowRotate
+        print("image tapped")
+        //let imageView = pageViews[currentPage]!
+
+//        imageView.bounds = view.bounds
+//        imageView.transform = CGAffineTransformMakeTranslation(1.3, 1.3)
     }
 }

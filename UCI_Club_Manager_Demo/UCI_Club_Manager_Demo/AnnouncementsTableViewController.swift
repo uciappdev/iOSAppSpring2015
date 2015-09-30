@@ -24,7 +24,7 @@ class AnnouncementsTableViewController: UITableViewController {
         if clubAnnouncements.count == 0 {
             let tbc = self.tabBarController as! ClubTabBarController
             
-            var service = Service()
+            let service = Service()
             service.pull_announcements("\(tbc.club!.id)") {
                 (response) in
                 self.loadAnnouncements(response)
@@ -58,10 +58,11 @@ class AnnouncementsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! AnnouncementTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AnnouncementTableViewCell
         var text : String
         var resetIndex : NSIndexPath? = nil
         
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if let lastIndex = lastSelectedCellIndexPath {
             if lastIndex == indexPath {
                 text = ""
@@ -107,14 +108,14 @@ class AnnouncementsTableViewController: UITableViewController {
     func loadAnnouncements(announcements : NSArray) {
         // Create announcement objects and reload the table.
         for announcement in announcements{
-            var id = announcement["id"]! as! String
-            var time_stamp = announcement["time_stamp"]! as! String
-            var club_id = announcement["club_id"]! as! String
-            var title = announcement["title"]! as! String
-            var subtitle = announcement["subtitle"] as! String
-            var paragraph = announcement["paragraph"] as! String
+            let id = announcement["id"]! as! String
+            let time_stamp = announcement["time_stamp"]! as! String
+            let club_id = announcement["club_id"]! as! String
+            let title = announcement["title"]! as! String
+            let subtitle = announcement["subtitle"] as! String
+            let paragraph = announcement["paragraph"] as! String
             
-            var clubObj = Announcement(id: id, time_stamp: time_stamp, club_id: club_id, title: title, subtitle: subtitle, paragraph: paragraph)
+            let clubObj = Announcement(id: id, time_stamp: time_stamp, club_id: club_id, title: title, subtitle: subtitle, paragraph: paragraph)
             clubAnnouncements.append(clubObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
@@ -123,7 +124,7 @@ class AnnouncementsTableViewController: UITableViewController {
     }
     
     func resetCell (index: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(index) as! AnnouncementTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(index) as! AnnouncementTableViewCell
         cell.paragraph.text = ""
         cell.paragraph.sizeToFit()
     }

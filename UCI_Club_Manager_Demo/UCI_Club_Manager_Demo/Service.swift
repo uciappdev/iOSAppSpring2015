@@ -45,14 +45,26 @@ class Service {
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL) {
             (data, response, error) in
-            
-            var error:NSError?
-            if pull {
-                if let response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray {
+            do {
+                if let response = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray {
                     callback(response)
                 }
             }
+            catch _ {
+                print("found error")
+            }
         }
+        
+//        let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL) {
+//            (data, response, error) in
+//            
+//            var error:NSError?
+//            if pull {
+//                if let response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? NSArray {
+//                    callback(response)
+//                }
+//            }
+//        }
         task.resume()
     }
     
@@ -60,7 +72,7 @@ class Service {
         let nsURL = NSURL(string: url)!
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL) {
             (data, response, error) -> Void in
-            var error:NSError?
+            //var error:NSError?
         }
         task.resume()
     }

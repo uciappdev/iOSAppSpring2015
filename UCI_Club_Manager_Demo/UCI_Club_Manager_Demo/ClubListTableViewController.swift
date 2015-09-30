@@ -10,6 +10,7 @@ import UIKit
 
 
 class ClubListTableViewController: UITableViewController {
+    
     // Collection of all clubs.
     var clubCollection = [Club]()
     // Array used to help determine indexPaths for each club.
@@ -21,12 +22,14 @@ class ClubListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // Reset values if user returns to page.
         resetValues()
         
         // If values values need to be set, run DB web service.  Prevents infinite looping.
         if sectionLookUp.count == 1 {
-            var service = Service()
+            let service = Service()
             service.pull_club {
                 (response) in
                 self.loadClubs(response)
@@ -55,7 +58,7 @@ class ClubListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClubCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClubCell", forIndexPath: indexPath) 
         // Determine index through the sectionLookUp and set the cell's properties.
         let clubCollectionIndex = sectionLookUp[indexPath.section] + indexPath.row
         cell.textLabel!.text = clubCollection[clubCollectionIndex].name
@@ -74,9 +77,14 @@ class ClubListTableViewController: UITableViewController {
         // Determine the selected club and initiate segue to ClubTabBarController
         let club = clubCollection[sectionLookUp[indexPath.section] + indexPath.row]
         selectedClub = club
-        let value = UIInterfaceOrientation.Portrait.rawValue
-        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+//        let value = UIInterfaceOrientation.Portrait.rawValue
+//        UIDevice.currentDevice().setValue(value, forKey: "orientation")
         performSegueWithIdentifier("toTabBarController", sender: self)
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Virtually removes the unused tableview cells
+        return 0.01
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -94,26 +102,28 @@ class ClubListTableViewController: UITableViewController {
     }
     
     func loadClubs(clubs : NSArray) {
-        // Loop over Array of JSON dictionaries and create Club Objects.  Add Objects to the club collection, reload the table, then populate the section look up array.
+        // Loop over Array of JSON dictionaries and create Club Objects.  Add Objects to the club collection, reload the table, then populate the section look up array.        
         for club in clubs{
-            var id = club["id"]! as! String
-            var time_stamp = club["time_stamp"]! as! String
-            var name = club["name"]! as! String
-            var category = club["category"]! as! String
-            var date_started = club["date_started"]! as! String
-            var clubObj = Club(id: id, time_stamp: time_stamp, name: name, category: category, date_started: date_started)
+            let id = club["id"]! as! String
+            let time_stamp = club["time_stamp"]! as! String
+            let name = club["name"]! as! String
+            let category = club["category"]! as! String
+            let date_started = club["date_started"]! as! String
+            let clubObj = Club(id: id, time_stamp: time_stamp, name: name, category: category, date_started: date_started)
             clubCollection.append(clubObj)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-            }
         }
         populateSectionLookUp()
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+            print("reloaded")
+        }
+
     }
     
     func populateSectionLookUp () {
         // Record the indexes where the club category changed.  Clubs are sorted by (Section, Alphabetical) when pulled from DB.
         var categoryTracker = clubCollection[0].category
-        for (i,club) in enumerate(clubCollection) {
+        for (i,club) in clubCollection.enumerate() {
             if club.category != categoryTracker {
                 sectionLookUp.append(i)
                 categoryTracker = club.category
